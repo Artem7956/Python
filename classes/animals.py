@@ -1,8 +1,9 @@
 class animal:
     voice = ''
-    ration=''
+    ration = ''
+
     def make_voice(self):
-        print (self.voice)
+        print(self.voice)
         
     pass
 class bird(animal):
@@ -50,7 +51,7 @@ class chicken(bird):
     eggs=0
     
     fly=False
-    def get_egg(self,c):
+    def get_egg(self):
         if self.eggs==0 :
             self.eggs+=1
             return 1
@@ -68,8 +69,8 @@ c1=cow()
 print('Получено молока,л:',c1.get_milk('Трава',10))
 print(c1.get_milk('Покрышки',10))
 ch=chicken()
-print(ch.get_egg(1))
-print(ch.get_egg(1))
+print(ch.get_egg())
+print(ch.get_egg())
 
 
 s1=sheep()
