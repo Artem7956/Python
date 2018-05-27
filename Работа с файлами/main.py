@@ -1,4 +1,4 @@
-# 1cook_book = {
+# 12cook_book = {
 # 'яйчница': [
 #   {'ingridient_name': 'яйца', 'quantity': 2, 'measure': 'шт.'},
 #   {'ingridient_name': 'помидоры', 'quantity': 100, 'measure': 'гр.'}
