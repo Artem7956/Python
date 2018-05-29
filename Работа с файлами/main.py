@@ -1,4 +1,4 @@
-# 1cook_book = {
+# cook_book1 = {
 # 'яйчница': [
 #   {'ingridient_name': 'яйца', 'quantity': 2, 'measure': 'шт.'},
 #   {'ingridient_name': 'помидоры', 'quantity': 100, 'measure': 'гр.'}
@@ -23,7 +23,7 @@ def make_ingridient(ist):
     tmp_ist = ist.split('|')
 
     ing['ingridient_name'] = tmp_ist[0].rstrip()
-    ing['quantity'] = tmp_ist[1].strip()
+    ing['quantity'] = int(tmp_ist[1].strip())
     ing['measure'] = tmp_ist[2].lstrip()
     return ing
 
@@ -46,20 +46,21 @@ for line in f:
     f.readline()
 
 print(cook_book)
+f.close()
 
 
 def get_shop_list_by_dishes(dishes, person_count):
-    shop_list = {}
-    for dish in dishes:
-        for ingridient in cook_book[dish]:
-            new_shop_list_item = dict(ingridient)
-            new_shop_list_item['quantity'] *= person_count
-        if new_shop_list_item['ingridient_name'] not in shop_list:
-          shop_list[new_shop_list_item['ingridient_name']] = new_shop_list_item
-        else:
-          shop_list[new_shop_list_item['ingridient_name']]['quantity'] +=new_shop_list_item['quantity']
-    return shop_list
+  shop_list = {}
+  for dish in dishes:
+    for ingridient in cook_book[dish]:
+      new_shop_list_item = dict(ingridient)
 
+      new_shop_list_item['quantity'] *= person_count
+      if new_shop_list_item['ingridient_name'] not in shop_list:
+        shop_list[new_shop_list_item['ingridient_name']] = new_shop_list_item
+      else:
+        shop_list[new_shop_list_item['ingridient_name']]['quantity'] += new_shop_list_item['quantity']
+  return shop_list
 
 def print_shop_list(shop_list):
   for shop_list_item in shop_list.values():
