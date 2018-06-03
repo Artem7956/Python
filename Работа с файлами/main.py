@@ -69,7 +69,7 @@ def create_shop_list(cb):
   print_shop_list(shop_list)
 
 
-cook1=get_cook_book_from_file('cook')
+cook1 = get_cook_book_from_file('cook')
 print(cook1)
 
 create_shop_list(cook1)
