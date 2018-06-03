@@ -28,22 +28,19 @@ def make_ingridient(ist):
     return ing
 
 
-cook_book = {}
-with open('cook', 'r', encoding='utf-8') as f:
-
-    for line in f:
-        dish = line
-        ing_count = f.readline()
-
-        ingridient = []
-        for i in range(int(ing_count)):
-            tmp_ing = f.readline()
-            ingridient.append(make_ingridient(tmp_ing.strip('\n')))
-            cook_book[dish.strip('\n').lower()] = ingridient
-        f.readline()
-
-
-print(cook_book)
+def get_cook_book_from_file(file_name):
+    cook_book = {}
+    with open(file_name, 'r', encoding='utf-8') as f:
+        for line in f:
+            dish = line
+            ing_count = f.readline()
+            ingridient = []
+            for i in range(int(ing_count)):
+                tmp_ing = f.readline()
+                ingridient.append(make_ingridient(tmp_ing.strip('\n')))
+                cook_book[dish.strip('\n').lower()] = ingridient
+            f.readline()
+    return cook_book
 
 
 def get_shop_list_by_dishes(dishes, person_count, cb):
@@ -64,11 +61,15 @@ def print_shop_list(shop_list):
     print('{} {} {}'.format(shop_list_item['ingridient_name'], shop_list_item['quantity'],
                             shop_list_item['measure']))
 
-def create_shop_list():
+def create_shop_list(cb):
   person_count = int(input('Введите количество человек: '))
   dishes = input('Введите блюда в расчете на одного человека (через запятую): ') \
     .lower().split(', ')
-  shop_list = get_shop_list_by_dishes(dishes, person_count,cook_book)
+  shop_list = get_shop_list_by_dishes(dishes, person_count,cb)
   print_shop_list(shop_list)
 
-create_shop_list()
+
+cook1=get_cook_book_from_file('cook')
+print(cook1)
+
+create_shop_list(cook1)
