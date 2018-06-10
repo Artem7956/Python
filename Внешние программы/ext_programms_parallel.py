@@ -14,11 +14,13 @@ files = [f for f in os.listdir(file_path)]
 
 if not os.path.exists(result_path):
     os.mkdir(result_path)
+# else:
+#     shutil.rmtree(result_path)
+#     os.mkdir(result_path)
 
-
-def convert_file(f,rf):
-    file_name = os.path.join(file_path, f)
-    result_file = os.path.join(result_path, f)
+def convert_file(f,sf,rf):
+    file_name = os.path.join(sf, f)
+    result_file = os.path.join(rf, f)
     print(file_name,result_file)
     subprocess.call('convert.exe ' + '"' + file_name + '" -resize 200 ' + result_file)
 
@@ -27,5 +29,5 @@ def convert_file(f,rf):
 
 if __name__ == '__main__':
      with Pool(4) as p:
-         p.map(partial(convert_file,rf = result_path), files)
+         p.map(partial(convert_file,sf=file_path,rf = result_path), files)
 
