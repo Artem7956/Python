@@ -44,7 +44,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 def string_in_file(file_name, string):
         with open(file_name, 'r') as f:
             s = f.read()
-        if string in s or string.lower() in s or string.title() in s:
+        if string.lower() in s.lower():
             return True
         return False
 
