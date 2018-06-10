@@ -34,7 +34,7 @@
 # Всего: 1
 
 # не забываем организовывать собственный код в функции
-from chardet.universaldetector import UniversalDetector
+#from chardet.universaldetector import UniversalDetector
 import os
 
 migrations = 'Migrations'
@@ -59,15 +59,6 @@ def get_files_with_string(dir1, file_list, string):
     return result_list
 
 
-def get_file_encoding(fname):
-    detector = UniversalDetector()
-    with open(fname, 'rb') as f:
-        for line in f:
-            detector.feed(line)
-            if detector.done:
-                break
-    detector.close()
-    return detector.result['encoding']
 
 
 if __name__ == '__main__':
