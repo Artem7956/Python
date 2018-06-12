@@ -38,9 +38,8 @@ for i in range(4):
     t.start()
 
 files = [f for f in os.listdir(file_path)]
-#print(files)
+
 for item in files:
-    #print(item)
     q.put(item)
 
 q.join()

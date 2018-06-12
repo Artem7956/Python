@@ -14,14 +14,13 @@ files = [f for f in os.listdir(file_path)]
 
 if not os.path.exists(result_path):
     os.mkdir(result_path)
-# else:
-#     shutil.rmtree(result_path)
-#     os.mkdir(result_path)
+#else:
+#    shutil.rmtree(result_path)
+#    os.mkdir(result_path)
 
 def convert_file(f,sf,rf):
     file_name = os.path.join(sf, f)
     result_file = os.path.join(rf, f)
-    print(file_name,result_file)
     subprocess.call('convert.exe ' + '"' + file_name + '" -resize 200 ' + result_file)
 
 
