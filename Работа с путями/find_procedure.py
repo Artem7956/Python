@@ -49,11 +49,11 @@ def string_in_file(file_name, string):
         return False
 
 
-def get_files_with_string(dir1, file_list, string):
+def get_files_with_string(directory, file_list, string):
     result_list = []
     for i in file_list:
 
-        if string_in_file(os.path.join(dir1, i), string):
+        if string_in_file(os.path.join(directory, i), string):
             print(os.path.join(migrations, i))
             result_list.append(i)
     return result_list
