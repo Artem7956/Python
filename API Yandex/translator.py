@@ -16,7 +16,7 @@ def translate_it(source_file, result_file, lt='ru'):
 
     https://translate.yandex.net/api/v1.5/tr.json/translate ?
 
-    key=<API-ключ>
+    key=<API-ключ> 
 
      & text=<переводимый текст>
 
