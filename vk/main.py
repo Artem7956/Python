@@ -1,6 +1,16 @@
 import vk
+import json
 
-ACCESS_TOKEN = 'f22b012f271b4e13a0e44a4350bde598f72840a3e96a08a281cab17e7fd843577c6ac86bbf36574a24c0f'
+
+def read_config():
+    with open('config.json', 'r') as f:
+        p = json.load(f)
+
+    access_token = p['config']['access_token']
+    users_list = [int(x) for x in p['config']['users'].split(',')]
+    if not access_token or not users_list:
+        return 1, None, None
+    return 0,access_token, users_list
 
 
 def get_common_friends(users, atoken):
@@ -14,5 +24,8 @@ def get_common_friends(users, atoken):
         print('Идентификатор пользователя:{0}, ссылка на страницу:{1}'.format(j, url))
 
 
-users_list = [278738684, 434258472, 26583897]
-get_common_friends(users_list, ACCESS_TOKEN)
+err , token, u_list = read_config()
+if err:
+    print('Отсутствует token и/или список пользователей')
+else:
+    get_common_friends(u_list, token)
