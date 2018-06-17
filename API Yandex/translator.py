@@ -81,4 +81,4 @@ def translate_from_files(source_path, result_path, lang_to='ru'):
         translate_it(os.path.join(source_path, i), os.path.join(result_path, i), lt=lang_to)
 
 
-translate_from_files(os.path.join(current_dir, source_dir), os.path.join(current_dir, result_dir))
+translate_from_files(os.path.join(current_dir, source_dir), os.path.join(current_dir, result_dir), 'az')
