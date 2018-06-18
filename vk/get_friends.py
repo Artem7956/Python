@@ -5,7 +5,6 @@ import json
 def read_config():
     with open('config.json', 'r') as f:
         p = json.load(f)
-
     access_token = p['config']['access_token']
     users_list = [int(x) for x in p['config']['users'].split(',')]
     if not access_token or not users_list:
