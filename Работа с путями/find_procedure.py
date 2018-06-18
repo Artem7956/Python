@@ -42,32 +42,24 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 def string_in_file(file_name, string):
-        with open(file_name, 'r') as f:
-            s = f.read()
-        if string.lower() in s.lower():
-            return True
-        return False
+    with open(file_name, 'r') as f:
+        tmp_string = f.read()
+    return string.lower() in tmp_string.lower()
 
 
 def get_files_with_string(directory, file_list, string):
     result_list = []
     for i in file_list:
-
         if string_in_file(os.path.join(directory, i), string):
             print(os.path.join(migrations, i))
             result_list.append(i)
     return result_list
 
 
-
-
 if __name__ == '__main__':
-
     fn = os.path.join(current_dir, migrations)
     files = [f for f in os.listdir(fn) if f.endswith('.sql')]
-
     while files:
         tmp_str = input('Введите строку:')
         files = get_files_with_string(os.path.join(current_dir, migrations), files, tmp_str)
-        print(len(files))
-    pass
+        print('Всего: {0}'.format(len(files)))
