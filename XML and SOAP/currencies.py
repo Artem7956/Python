@@ -10,8 +10,6 @@ def get_travel_cost(file):
             cur_from = line.split()[2]
             amount = int(line.split()[1])
             res += math.ceil(client.service.ConvertToNum(None, cur_from, 'RUB', amount, True, None, None, None))
-            # print(line,math.ceil(client.service.ConvertToNum(None, cur_from, 'RUB', amount, True, None, None, None)))
-
     return res
 
 
