@@ -10,6 +10,8 @@ USER = 'users.get'
 GROUPS = 'groups.get'
 GROUP = 'groups.getById'
 API_VERSION = '5.0'
+ERROR = 1
+OK = 0
 
 
 def call_vk_api(object_id, object_type, method, at, fields=None):
@@ -28,9 +30,9 @@ def call_vk_api(object_id, object_type, method, at, fields=None):
 def read_config():
     error = 0
     with open('config.json', 'r') as conf:
-        p = json.load(conf)
-    access_token = p['config']['access_token']
-    usr = p['config']['user']
+        tmp_json = json.load(conf)
+    access_token = tmp_json['config']['access_token']
+    usr = tmp_json['config']['user']
     if not access_token or not usr:
          error = 1
     try:
@@ -38,14 +40,14 @@ def read_config():
     except Exception:
         error = 1
     if error:
-        return error, None, None
-    return 0, access_token, user
+        return [ERROR, None, None]
+    return [OK, access_token, user]
 
 
 # user = 26583897
 
 if __name__ == "__main__":
-    err, token, user = read_config()
+    [err, token, user] = read_config()
     if err:
         sys.exit('Отсутствует либо некорректный токен и/или пользователь')
 
